@@ -7,7 +7,7 @@ Usage:
     model = torch.hub.load('ultralytics/yolov5:master', 'custom', 'path/to/yolov5s.onnx')  # file from branch
 """
 import torch
-def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=None):
+def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=torch.device):
     """Creates or loads a YOLOv5 model
     Arguments:
         name (str): model name 'yolov5s' or path 'path/to/best.pt'
@@ -53,7 +53,7 @@ def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbos
         help_url = 'https://github.com/ultralytics/yolov5/issues/36'
         s = f'{e}. Cache may be out of date, try `force_reload=True` or see {help_url} for help.'
         raise Exception(s) from e
-def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=None):
+def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=torch.device):
     # YOLOv5 custom or local model
     return _create(path, autoshape=autoshape, verbose=_verbose, device=device)
 def yolov5n(pretrained=True, channels=3, classes=80, autoshape=True, _verbose=True, device=None):
