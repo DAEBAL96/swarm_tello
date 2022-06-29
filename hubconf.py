@@ -30,7 +30,7 @@ def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbos
         LOGGER.setLevel(logging.WARNING)
     check_requirements(exclude=('tensorboard', 'thop', 'opencv-python'))
     name = Path(name)
-    path = name.with_suffix('.pt') if name.suffix == '' and not name.is_dir() else name  # checkpoint path
+    path = 'daebardaebar/tellosibar/best.pt'  # checkpoint path
     try:
         device = select_device(device)
         if pretrained and channels == 3 and classes == 1:
