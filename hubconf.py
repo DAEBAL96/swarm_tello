@@ -7,7 +7,7 @@ Usage:
     model = torch.hub.load('ultralytics/yolov5:master', 'custom', 'path/to/yolov5s.onnx')  # file from branch
 """
 import torch
-def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=torch.device):
+def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=None):
     """Creates or loads a YOLOv5 model
     Arguments:
         name (str): model name 'yolov5s' or path 'path/to/best.pt'
@@ -34,7 +34,7 @@ def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbos
     try:
         device = select_device(device)
         if pretrained and channels == 3 and classes == 1:
-            model = DetectMultiBackend(path, device=device)  # download/load FP32 model
+            model = DetectMultiBackend(path, device=None)  # download/load FP32 model
             # model = models.experimental.attempt_load(path, map_location=device)  # download/load FP32 model
         else:
             cfg = list((Path(__file__).parent / 'models').rglob(f'{path.stem}.yaml'))[0]  # model.yaml path
@@ -53,9 +53,9 @@ def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbos
         help_url = 'https://github.com/ultralytics/yolov5/issues/36'
         s = f'{e}. Cache may be out of date, try `force_reload=True` or see {help_url} for help.'
         raise Exception(s) from e
-def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=torch.device):
+def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=None):
     # YOLOv5 custom or local model
-    return _create(path, autoshape=autoshape, verbose=_verbose, device=device)
+    return _create(path, autoshape=autoshape, verbose=_verbose, device=None)
 def yolov5n(pretrained=True, channels=3, classes=80, autoshape=True, _verbose=True, device=None):
     # YOLOv5-nano model https://github.com/ultralytics/yolov5
     return _create('yolov5n', pretrained, channels, classes, autoshape, _verbose, device)
