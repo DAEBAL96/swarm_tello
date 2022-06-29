@@ -7,7 +7,7 @@ Usage:
     model = torch.hub.load('ultralytics/yolov5:master', 'custom', 'path/to/yolov5s.onnx')  # file from branch
 """
 import torch
-def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=):
+def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=str):
     """Creates or loads a YOLOv5 model
     Arguments:
         name (str): model name 'yolov5s' or path 'path/to/best.pt'
