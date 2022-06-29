@@ -7,7 +7,7 @@ Usage:
     model = torch.hub.load('ultralytics/yolov5:master', 'custom', 'path/to/yolov5s.onnx')  # file from branch
 """
 import torch
-def _create(name, pretrained=True, channels=3, classes=80, autoshape=True, verbose=True, device=None):
+def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbose=True, device=None):
     """Creates or loads a YOLOv5 model
     Arguments:
         name (str): model name 'yolov5s' or path 'path/to/best.pt'
@@ -33,7 +33,7 @@ def _create(name, pretrained=True, channels=3, classes=80, autoshape=True, verbo
     path = name.with_suffix('.pt') if name.suffix == '' and not name.is_dir() else name  # checkpoint path
     try:
         device = select_device(device)
-        if pretrained and channels == 3 and classes == 80:
+        if pretrained and channels == 3 and classes == 1:
             model = DetectMultiBackend(path, device=device)  # download/load FP32 model
             # model = models.experimental.attempt_load(path, map_location=device)  # download/load FP32 model
         else:
@@ -94,13 +94,13 @@ if __name__ == '__main__':
     import numpy as np
     from PIL import Image
     from utils.general import cv2
-    imgs = [
-        'data/images/zidane.jpg',  # filename
-        Path('data/images/zidane.jpg'),  # Path
-        'https://ultralytics.com/images/zidane.jpg',  # URI
-        cv2.imread('data/images/bus.jpg')[:, :, ::-1],  # OpenCV
-        Image.open('data/images/bus.jpg'),  # PIL
-        np.zeros((320, 640, 3))]  # numpy
-    results = model(imgs, size=320)  # batched inference
-    results.print()
-    results.save()
+    #imgs = [
+    #    'data/images/zidane.jpg',  # filename
+    #    Path('data/images/zidane.jpg'),  # Path
+    #    'https://ultralytics.com/images/zidane.jpg',  # URI
+    #    cv2.imread('data/images/bus.jpg')[:, :, ::-1],  # OpenCV
+    #    Image.open('data/images/bus.jpg'),  # PIL
+    #    np.zeros((320, 640, 3))]  # numpy
+    #results = model(imgs, size=360)  # batched inference
+    #results.print()
+    #results.save()
