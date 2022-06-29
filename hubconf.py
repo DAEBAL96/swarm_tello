@@ -87,8 +87,8 @@ def yolov5x6(pretrained=True, channels=3, classes=80, autoshape=True, _verbose=T
     # YOLOv5-xlarge-P6 model https://github.com/ultralytics/yolov5
     return _create('yolov5x6', pretrained, channels, classes, autoshape, _verbose, device)
 if __name__ == '__main__':
-    model = _create(name='yolov5s', pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)
-    # model = custom(path='path/to/model.pt')  # custom
+    #model = _create(name='yolov5s', pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)
+    model = custom(path='daebardaebar/tellosibar/best.pt')  # custom
     # Verify inference
     from pathlib import Path
     import numpy as np
