@@ -53,9 +53,9 @@ def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbos
         help_url = 'https://github.com/ultralytics/yolov5/issues/36'
         s = f'{e}. Cache may be out of date, try `force_reload=True` or see {help_url} for help.'
         raise Exception(s) from e
-def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=):
+def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=str):
     # YOLOv5 custom or local model
-    return _create(path, autoshape=autoshape, verbose=_verbose, device='')
+    return _create(path, autoshape=autoshape, verbose=_verbose, device=str)
 
 if __name__ == '__main__':
     #model = _create(name='yolov5s', pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)
