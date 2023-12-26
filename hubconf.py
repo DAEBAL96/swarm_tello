@@ -56,7 +56,7 @@ def _create(name, pretrained=True, channels=3, classes=1, autoshape=True, verbos
 def custom(path='daebardaebar/tellosibar/best.pt', autoshape=True, _verbose=True, device=cpu):
     # YOLOv5 custom or local model
     return _create(path, autoshape=autoshape, verbose=_verbose, device=cpu)
-
+ 
 if __name__ == '__main__':
     #model = _create(name='yolov5s', pretrained=True, channels=3, classes=80, autoshape=True, verbose=True)
     model = custom(path='daebardaebar/tellosibar/best.pt')  # custom
